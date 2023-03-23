@@ -16,7 +16,5 @@ public class Owner {
     @Id
     private Long id;
     @OneToMany
-    private List<Order> orders;
-    @OneToMany
     private List<Car> cars;
 }

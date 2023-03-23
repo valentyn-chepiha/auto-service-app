@@ -3,7 +3,6 @@ package com.example.autoserviceapp.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,6 +19,4 @@ public class Car {
     private int year;
     @Column(name = "car_number")
     private String carNumber;
-    @ManyToOne
-    private Owner owner;
 }

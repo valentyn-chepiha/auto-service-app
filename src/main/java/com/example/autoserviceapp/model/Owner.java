@@ -2,6 +2,7 @@ package com.example.autoserviceapp.model;
 
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,10 +25,14 @@ public class Owner {
     @GeneratedValue(generator = "owner_id_seq", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "owner_id_seq", sequenceName = "owner_id_seq", allocationSize = 1)
     private Long id;
-    @OneToMany
+    private String name;
+    @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY)
     private List<Car> cars;
+//    Etap 3
+//    @OneToMany
+//    private List<Order> orders;
+
     /*
-    *
     1) https://attacomsian.com/blog/spring-data-jpa-one-to-many-mapping
     2) https://www.bezkoder.com/jpa-one-to-many/
     3) https://www.baeldung.com/hibernate-one-to-many

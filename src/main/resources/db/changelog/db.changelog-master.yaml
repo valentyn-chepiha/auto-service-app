@@ -1,10 +1,10 @@
 databaseChangeLog:
   - include:
-      file: db/changelog/sql/1_create_cars_id_sequence.sql
+      file: db/changelog/sql/1_create_sequence_cars_id.sql
   - include:
-      file: db/changelog/sql/1_create_details_id_sequence.sql
+      file: db/changelog/sql/1_create_sequence_details_id.sql
   - include:
-      file: db/changelog/sql/1_create_masters_id_sequence.sql
+      file: db/changelog/sql/1_create_sequence_masters_id.sql
   - include:
       file: db/changelog/sql/1_create_table_cars.sql
   - include:
@@ -12,10 +12,14 @@ databaseChangeLog:
   - include:
       file: db/changelog/sql/1_create_table_masters.sql
   - include:
-      file: db/changelog/sql/2_create_owners_id_sequence.sql
+      file: db/changelog/sql/2_create_sequence_owners_id.sql
   - include:
       file: db/changelog/sql/2_create_table_owners.sql
   - include:
       file: db/changelog/sql/2_alter_table_cars_add_owner_id.sql
   - include:
       file: db/changelog/sql/2_alter_table_cars_add_fk_owner_id.sql
+  - include:
+      file: db/changelog/sql/2_create_sequence_services_id.sql
+  - include:
+      file: db/changelog/sql/2_create_table_services.sql

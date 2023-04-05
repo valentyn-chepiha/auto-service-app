@@ -23,3 +23,13 @@ databaseChangeLog:
       file: db/changelog/sql/2_create_sequence_services_id.sql
   - include:
       file: db/changelog/sql/2_create_table_services.sql
+  - include:
+      file: db/changelog/sql/3_create_table_orders.sql
+  - include:
+      file: db/changelog/sql/3_alter_table_services_add_order_id.sql
+  - include:
+      file: db/changelog/sql/3_alter_table_services_add_fk_order_id.sql
+  - include:
+      file: db/changelog/sql/3_create_table_orders_details.sql
+  - include:
+      file: db/changelog/sql/3_create_sequence_orders_id.sql

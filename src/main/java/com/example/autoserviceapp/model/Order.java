@@ -2,13 +2,23 @@ package com.example.autoserviceapp.model;
 
 import java.time.LocalDate;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,21 +30,31 @@ import lombok.Setter;
 @Table(name = "orders")
 public class Order {
     @Id
+    @GeneratedValue(generator = "orders_id_seq", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "orders_id_seq", sequenceName = "orders_id_seq", allocationSize = 1)
     private Long id;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
+    @MapsId
+    @JoinColumn(name = "car_id")
     private Car car;
     private String description;
     @Column(name = "date_start")
     private LocalDate dateStart;
-    @OneToMany
-    private List<Service> services;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "orders_details",
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "detail_id"))
     private List<Detail> details;
     @Enumerated(EnumType.STRING)
+    @Column(name = "status_paid")
     private StatusService status;
     private double total;
     @Column(name = "date_end")
     private LocalDate dateEnd;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "owner_id", nullable = false)
+    private Owner owner;
 
     @Getter
     @AllArgsConstructor

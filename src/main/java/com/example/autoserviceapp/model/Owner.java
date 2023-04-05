@@ -22,15 +22,14 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Owner {
     @Id
-    @GeneratedValue(generator = "owner_id_seq", strategy = GenerationType.SEQUENCE)
-    @SequenceGenerator(name = "owner_id_seq", sequenceName = "owner_id_seq", allocationSize = 1)
+    @GeneratedValue(generator = "owners_id_seq", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "owners_id_seq", sequenceName = "owners_id_seq", allocationSize = 1)
     private Long id;
     private String name;
     @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY)
     private List<Car> cars;
-//    Etap 3
-//    @OneToMany
-//    private List<Order> orders;
+    @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY)
+    private List<Order> orders;
 
     /*
     1) https://attacomsian.com/blog/spring-data-jpa-one-to-many-mapping

@@ -30,10 +30,4 @@ public class Owner {
     private List<Car> cars;
     @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY)
     private List<Order> orders;
-
-    /*
-    1) https://attacomsian.com/blog/spring-data-jpa-one-to-many-mapping
-    2) https://www.bezkoder.com/jpa-one-to-many/
-    3) https://www.baeldung.com/hibernate-one-to-many
-    * */
 }

@@ -32,7 +32,8 @@ public class CarController {
     @PutMapping
     public CarResponseDto updateCar(@RequestParam(name = "id") Long id,
                                     @RequestBody CarRequestDto carRequestDto) {
-
-        return null;
+        Car car = carRequestMapper.toEntity(carRequestDto);
+        car.setId(id);
+        return carResponseDto.toDto(carService.add(car));
     }
 }

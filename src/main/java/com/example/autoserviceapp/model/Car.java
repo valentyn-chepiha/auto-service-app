@@ -28,7 +28,7 @@ public class Car {
     private Long id;
     private String brand;
     private String model;
-    private int year;
+    private Integer year;
     @Column(name = "car_number")
     private String carNumber;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

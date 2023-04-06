@@ -1,5 +1,6 @@
 package com.example.autoserviceapp.model;
 
+import java.math.BigDecimal;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,5 +24,5 @@ public class Detail {
     @SequenceGenerator(name = "details_id_seq", sequenceName = "details_id_seq", allocationSize = 1)
     private Long id;
     private String name;
-    private double price;
+    private BigDecimal price;
 }

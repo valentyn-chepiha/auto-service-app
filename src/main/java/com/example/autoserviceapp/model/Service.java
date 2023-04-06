@@ -1,5 +1,6 @@
 package com.example.autoserviceapp.model;
 
+import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -35,7 +36,7 @@ public class Service {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "master_id", nullable = false)
     private Master master;
-    private double cost;
+    private BigDecimal cost;
     @Enumerated(EnumType.STRING)
     @Column(name = "status_paid")
     private StatusPaid status;

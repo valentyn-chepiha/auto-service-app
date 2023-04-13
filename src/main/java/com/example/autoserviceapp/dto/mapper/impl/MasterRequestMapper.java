@@ -14,6 +14,8 @@ public class MasterRequestMapper implements RequestMapper<Master, MasterRequestD
         Master master = new Master();
         master.setPib(dto.getPib());
         Set<Long> serviceIds = new HashSet<>(dto.getServiceIds());
+        //      todo:
+        //        ???
         return master;
     }
 }

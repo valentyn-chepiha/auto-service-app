@@ -27,5 +27,5 @@ public class Master {
     private Long id;
     private String pib;
     @OneToMany(mappedBy = "master", fetch =  FetchType.LAZY)
-    private List<Service> services;
+    private List<Repair> repairs;
 }

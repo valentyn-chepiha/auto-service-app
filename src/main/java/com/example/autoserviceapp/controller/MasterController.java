@@ -41,8 +41,10 @@ public class MasterController {
         return masterResponseMapper.toDto(masterService.update(master));
     }
 
-    @GetMapping("/job")
+    @GetMapping("/jobs")
     public List<Repair> getAllJobs(@RequestParam(name = "id") Long id) {
+        // todo:
+        //      replase repair to RepairResponseDto
         Master master = masterService.get(id).get();
         return master.getRepairs();
     }

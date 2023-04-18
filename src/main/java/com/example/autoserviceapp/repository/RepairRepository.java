@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RepairRepository extends JpaRepository<Repair, Long> {
-    public List<Repair> findAllByIdIn(Set<Long> ids);
+    List<Repair> findAllByIdIn(Set<Long> ids);
 }

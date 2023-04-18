@@ -6,5 +6,5 @@ import lombok.Data;
 @Data
 public class MasterRequestDto {
     private String pib;
-    private List<Long> serviceIds;
+    private List<Long> repairIds;
 }

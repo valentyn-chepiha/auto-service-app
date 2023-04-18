@@ -34,6 +34,6 @@ public class CarController {
                                     @RequestBody CarRequestDto carRequestDto) {
         Car car = carRequestMapper.toEntity(carRequestDto);
         car.setId(id);
-        return carResponseDto.toDto(carService.add(car));
+        return carResponseDto.toDto(carService.update(car));
     }
 }

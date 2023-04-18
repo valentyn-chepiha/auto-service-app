@@ -12,7 +12,7 @@ public class MasterResponseMapper implements ResponseMapper<Master, MasterRespon
         MasterResponseDto dto = new MasterResponseDto();
         dto.setId(entity.getId());
         dto.setPib(entity.getPib());
-        dto.setServices(entity.getServices());
+        dto.setRepairs(entity.getRepairs());
         return dto;
     }
 }

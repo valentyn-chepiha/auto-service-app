@@ -11,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -25,7 +24,7 @@ import lombok.Setter;
 @Table(name = "services")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Service {
+public class Repair {
     @Id
     @GeneratedValue(generator = "services_id_seq", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "services_id_seq", sequenceName = "services_id_seq", allocationSize = 1)

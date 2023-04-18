@@ -33,6 +33,6 @@ public class DetailController {
                                           @RequestBody DetailRequestDto detailRequestDto) {
         Detail detail =  detailRequestMapper.toEntity(detailRequestDto);
         detail.setId(id);
-        return detailResponseMapper.toDto(detailService.add(detail));
+        return detailResponseMapper.toDto(detailService.update(detail));
     }
 }

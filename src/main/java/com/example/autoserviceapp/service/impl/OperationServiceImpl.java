@@ -5,40 +5,40 @@ import java.util.Optional;
 import java.util.Set;
 import com.example.autoserviceapp.model.Operation;
 import com.example.autoserviceapp.repository.OperationRepository;
-import com.example.autoserviceapp.service.EntityRepairService;
+import com.example.autoserviceapp.service.EntityOperationService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class OperationServiceImpl implements EntityRepairService<Operation, Long> {
+public class OperationServiceImpl implements EntityOperationService<Operation, Long> {
 
-    private OperationRepository repairRepository;
+    private OperationRepository operationRepository;
 
     @Override
     public Operation add(Operation entity) {
-        return repairRepository.save(entity);
+        return operationRepository.save(entity);
     }
 
     @Override
     public Operation update(Operation entity) {
-        return repairRepository.save(entity);
+        return operationRepository.save(entity);
     }
 
     @Override
     public Optional<Operation> get(Long id) {
-        return repairRepository.findById(id);
+        return operationRepository.findById(id);
     }
 
     @Override
     public List<Operation> getAll() {
-        return repairRepository.findAll();
+        return operationRepository.findAll();
     }
 
 
     @Override
     public List<Operation> getAllByIds(Set<Long> ids) {
-        return repairRepository.findAllByIdIn(ids);
+        return operationRepository.findAllByIdIn(ids);
     }
 
 }

@@ -43,7 +43,7 @@ public class Operation {
     @Getter
     @AllArgsConstructor
     public enum StatusPaid {
-        PAID("Paid"), NOT_PAID("not_paid");
+        PAID("paid"), NOT_PAID("not_paid");
 
         private String name;
     }

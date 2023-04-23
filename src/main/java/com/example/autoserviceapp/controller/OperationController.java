@@ -3,5 +3,5 @@ package com.example.autoserviceapp.controller;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class RepairController {
+public class OperationController {
 }

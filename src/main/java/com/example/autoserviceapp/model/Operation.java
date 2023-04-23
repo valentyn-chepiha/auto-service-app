@@ -24,7 +24,7 @@ import lombok.Setter;
 @Table(name = "services")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Repair {
+public class Operation {
     @Id
     @GeneratedValue(generator = "services_id_seq", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "services_id_seq", sequenceName = "services_id_seq", allocationSize = 1)

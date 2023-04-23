@@ -42,6 +42,13 @@ public class Order {
     private LocalDate dateStart;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
+            name = "orders_services",
+            joinColumns = @JoinColumn(name =  "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "operation_id")
+    )
+    private List<Operation> operations;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(
             name = "orders_details",
             joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "detail_id"))

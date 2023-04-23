@@ -7,7 +7,7 @@ import com.example.autoserviceapp.dto.MasterResponseDto;
 import com.example.autoserviceapp.dto.mapper.RequestMapper;
 import com.example.autoserviceapp.dto.mapper.ResponseMapper;
 import com.example.autoserviceapp.model.Master;
-import com.example.autoserviceapp.model.Repair;
+import com.example.autoserviceapp.model.Operation;
 import com.example.autoserviceapp.service.EntityMasterService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,11 +42,11 @@ public class MasterController {
     }
 
     @GetMapping("/jobs")
-    public List<Repair> getAllJobs(@RequestParam(name = "id") Long id) {
+    public List<Operation> getAllJobs(@RequestParam(name = "id") Long id) {
         // todo:
         //      replase repair to RepairResponseDto
         Master master = masterService.get(id).get();
-        return master.getRepairs();
+        return master.getOperations();
     }
 
     @GetMapping("/salary")

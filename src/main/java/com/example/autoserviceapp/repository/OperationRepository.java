@@ -2,11 +2,11 @@ package com.example.autoserviceapp.repository;
 
 import java.util.List;
 import java.util.Set;
-import com.example.autoserviceapp.model.Repair;
+import com.example.autoserviceapp.model.Operation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RepairRepository extends JpaRepository<Repair, Long> {
-    List<Repair> findAllByIdIn(Set<Long> ids);
+public interface OperationRepository extends JpaRepository<Operation, Long> {
+    List<Operation> findAllByIdIn(Set<Long> ids);
 }

@@ -5,7 +5,7 @@ import java.util.Set;
 import com.example.autoserviceapp.dto.MasterRequestDto;
 import com.example.autoserviceapp.dto.mapper.RequestMapper;
 import com.example.autoserviceapp.model.Master;
-import com.example.autoserviceapp.repository.RepairRepository;
+import com.example.autoserviceapp.repository.OperationRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -13,14 +13,14 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 public class MasterRequestMapper implements RequestMapper<Master, MasterRequestDto> {
 
-    private RepairRepository repairRepository;
+    private OperationRepository repairRepository;
 
     @Override
     public Master toEntity(MasterRequestDto dto) {
         Master master = new Master();
         master.setPib(dto.getPib());
         Set<Long> repairIds = new HashSet<>(dto.getRepairIds());
-        master.setRepairs(repairRepository.findAllByIdIn(repairIds));
+        master.setOperations(repairRepository.findAllByIdIn(repairIds));
         return master;
     }
 }

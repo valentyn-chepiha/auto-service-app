@@ -1,6 +1,5 @@
 package com.example.autoserviceapp.dto;
 
-import com.example.autoserviceapp.model.Owner;
 import lombok.Data;
 
 @Data
@@ -10,5 +9,5 @@ public class CarResponseDto {
     private String model;
     private int year;
     private String carNumber;
-    private Owner owner;
+    private Long ownerId;
 }

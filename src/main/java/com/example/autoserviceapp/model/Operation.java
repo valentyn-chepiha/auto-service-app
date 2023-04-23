@@ -24,7 +24,7 @@ import lombok.Setter;
 @Table(name = "services")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Repair {
+public class Operation {
     @Id
     @GeneratedValue(generator = "services_id_seq", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "services_id_seq", sequenceName = "services_id_seq", allocationSize = 1)
@@ -43,7 +43,7 @@ public class Repair {
     @Getter
     @AllArgsConstructor
     public enum StatusPaid {
-        PAID("Paid"), NOT_PAID("not_paid");
+        PAID("paid"), NOT_PAID("not_paid");
 
         private String name;
     }

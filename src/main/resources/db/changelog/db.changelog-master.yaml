@@ -33,3 +33,6 @@ databaseChangeLog:
       file: db/changelog/sql/3_create_table_orders_details.sql
   - include:
       file: db/changelog/sql/3_create_sequence_orders_id.sql
+  - include:
+      file: db/changelog/sql/3_create_table_orders_services.sql
+

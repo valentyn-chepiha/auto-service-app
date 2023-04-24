@@ -1,6 +1,8 @@
 package com.example.autoserviceapp.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import com.example.autoserviceapp.dto.OrderResponseDto;
 import com.example.autoserviceapp.dto.OwnerRequestDto;
 import com.example.autoserviceapp.dto.OwnerResponseDto;
 import com.example.autoserviceapp.dto.mapper.RequestMapper;
@@ -23,25 +25,27 @@ import org.springframework.web.bind.annotation.RestController;
 public class OwnerController {
 
     private EntityService<Owner, Long> ownerService;
-    private RequestMapper<Owner, OwnerRequestDto> requestMapper;
-    private ResponseMapper<Owner, OwnerResponseDto> responseMapper;
+    private RequestMapper<Owner, OwnerRequestDto> ownerRequestMapper;
+    private ResponseMapper<Owner, OwnerResponseDto> ownerResponseMapper;
+    private ResponseMapper<Order, OrderResponseDto> orderResponseMapper;
+
     @PostMapping
     public OwnerResponseDto createOwner(@RequestBody OwnerRequestDto requestDto) {
-        return responseMapper.toDto(ownerService.add(requestMapper.toEntity(requestDto)));
+        return ownerResponseMapper.toDto(ownerService.add(ownerRequestMapper.toEntity(requestDto)));
     }
 
     @PutMapping
     public OwnerResponseDto updateOwner(@RequestParam(name = "id") Long id,
                                         @RequestBody OwnerRequestDto requestDto) {
-        Owner owner = requestMapper.toEntity(requestDto);
+        Owner owner = ownerRequestMapper.toEntity(requestDto);
         owner.setId(id);
-        return responseMapper.toDto(ownerService.update(owner));
+        return ownerResponseMapper.toDto(ownerService.update(owner));
     }
 
-    // todo
-    //      change Order to OrderResponseDto
     @GetMapping
-    public List<Order> getOrders(@RequestParam(name = "id") Long id) {
-        return ownerService.get(id).get().getOrders();
+    public List<OrderResponseDto> getOrders(@RequestParam(name = "id") Long id) {
+        return ownerService.get(id).get().getOrders().stream()
+                .map(o -> orderResponseMapper.toDto(o))
+                .collect(Collectors.toList());
     }
 }

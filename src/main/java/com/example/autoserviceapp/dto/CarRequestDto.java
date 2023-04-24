@@ -10,6 +10,3 @@ public class CarRequestDto {
     private String carNumber;
     private long ownerId;
 }
-
-//todo:
-//    toString for all entity

@@ -1,5 +1,6 @@
 package com.example.autoserviceapp.model;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -56,7 +57,7 @@ public class Order {
     @Enumerated(EnumType.STRING)
     @Column(name = "status_paid")
     private StatusService status;
-    private double total;
+    private BigDecimal total;
     @Column(name = "date_end")
     private LocalDate dateEnd;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

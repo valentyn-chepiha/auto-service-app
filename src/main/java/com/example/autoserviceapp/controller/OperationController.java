@@ -36,7 +36,7 @@ public class OperationController {
         return responseMapper.toDto(operationService.update(operation));
     }
 
-    @PutMapping
+    @PutMapping("/status")
     public OperationResponseDto updateOperationStatus(@RequestParam(name = "id") Long id,
                                                       @RequestParam(name = "status") String status){
         Operation operation = operationService.get(id).get();

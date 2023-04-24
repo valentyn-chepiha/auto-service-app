@@ -45,7 +45,7 @@ public class OrderController {
         return orderResponseMapper.toDto(orderService.update(order));
     }
 
-    @PutMapping
+    @PutMapping("/status")
     public OrderResponseDto updateOrderStatus(@RequestParam(name = "id") Long id,
                                               @RequestParam(name = "status") String status){
         return orderResponseMapper.toDto(orderService.updateStatus(id, status));

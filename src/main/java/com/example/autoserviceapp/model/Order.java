@@ -45,7 +45,7 @@ public class Order {
     @JoinTable(
             name = "orders_services",
             joinColumns = @JoinColumn(name =  "order_id"),
-            inverseJoinColumns = @JoinColumn(name = "operation_id")
+            inverseJoinColumns = @JoinColumn(name = "service_id")
     )
     private List<Operation> operations;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)

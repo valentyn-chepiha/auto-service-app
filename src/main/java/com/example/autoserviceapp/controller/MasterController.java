@@ -2,8 +2,10 @@ package com.example.autoserviceapp.controller;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.stream.Collectors;
 import com.example.autoserviceapp.dto.MasterRequestDto;
 import com.example.autoserviceapp.dto.MasterResponseDto;
+import com.example.autoserviceapp.dto.OperationResponseDto;
 import com.example.autoserviceapp.dto.mapper.RequestMapper;
 import com.example.autoserviceapp.dto.mapper.ResponseMapper;
 import com.example.autoserviceapp.model.Master;
@@ -25,6 +27,7 @@ public class MasterController {
 
     private RequestMapper<Master, MasterRequestDto> masterRequestMapper;
     private ResponseMapper<Master, MasterResponseDto> masterResponseMapper;
+    private ResponseMapper<Operation, OperationResponseDto> operationResponseMapper;
     private EntityMasterService<Master, Long> masterService;
 
     @PostMapping
@@ -42,11 +45,11 @@ public class MasterController {
     }
 
     @GetMapping("/jobs")
-    public List<Operation> getAllJobs(@RequestParam(name = "id") Long id) {
-        // todo:
-        //      replace repair to RepairResponseDto
+    public List<OperationResponseDto> getAllJobs(@RequestParam(name = "id") Long id) {
         Master master = masterService.get(id).get();
-        return master.getOperations();
+        return master.getOperations().stream()
+                .map(o -> operationResponseMapper.toDto(o))
+                .collect(Collectors.toList());
     }
 
     @GetMapping("/salary")

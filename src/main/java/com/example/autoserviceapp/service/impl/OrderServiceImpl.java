@@ -82,6 +82,10 @@ public class OrderServiceImpl implements EntityOrderService<Order, Long> {
                 .map(Operation::getCost)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
+        if (order.getOperations().size() == 0) {
+            totalOperation = BigDecimal.valueOf(500);
+        }
+
         BigDecimal total = new BigDecimal(0);
         total = total.add(totalDetail);
         total = total.add(totalOperation);

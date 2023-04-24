@@ -44,7 +44,7 @@ public class MasterController {
     @GetMapping("/jobs")
     public List<Operation> getAllJobs(@RequestParam(name = "id") Long id) {
         // todo:
-        //      replase repair to RepairResponseDto
+        //      replace repair to RepairResponseDto
         Master master = masterService.get(id).get();
         return master.getOperations();
     }

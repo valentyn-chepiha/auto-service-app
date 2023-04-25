@@ -24,13 +24,13 @@ public class OperationController {
     private EntityOperationService<Operation, Long> operationService;
 
     @PostMapping
-    public OperationResponseDto createOperation(@RequestBody OperationRequestDto dto){
+    public OperationResponseDto createOperation(@RequestBody OperationRequestDto dto) {
         return responseMapper.toDto(operationService.add(requestMapper.toEntity(dto)));
     }
 
     @PutMapping
     public OperationResponseDto updateOperation(@RequestParam(name = "id") Long id,
-                                                @RequestBody OperationRequestDto dto){
+                                                @RequestBody OperationRequestDto dto) {
         Operation operation = requestMapper.toEntity(dto);
         operation.setId(id);
         return responseMapper.toDto(operationService.update(operation));
@@ -38,7 +38,7 @@ public class OperationController {
 
     @PutMapping("/status")
     public OperationResponseDto updateOperationStatus(@RequestParam(name = "id") Long id,
-                                                      @RequestParam(name = "status") String status){
+                                                  @RequestParam(name = "status") String status) {
         Operation operation = operationService.get(id).get();
         operation.setStatus(Operation.StatusPaid.valueOf(status));
         return responseMapper.toDto(operationService.update(operation));

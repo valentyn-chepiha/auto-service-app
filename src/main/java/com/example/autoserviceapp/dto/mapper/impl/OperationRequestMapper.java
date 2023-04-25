@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 public class OperationRequestMapper implements RequestMapper<Operation, OperationRequestDto> {
-
     private EntityMasterService<Master, Long> masterService;
     private EntityOrderService<Order, Long> orderService;
 

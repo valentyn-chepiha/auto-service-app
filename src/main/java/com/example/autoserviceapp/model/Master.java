@@ -26,6 +26,6 @@ public class Master {
     @SequenceGenerator(name = "masters_id_seq", sequenceName = "masters_id_seq", allocationSize = 1)
     private Long id;
     private String pib;
-    @OneToMany(mappedBy = "master", fetch =  FetchType.LAZY)
+    @OneToMany(mappedBy = "master", fetch = FetchType.LAZY)
     private List<Operation> operations;
 }

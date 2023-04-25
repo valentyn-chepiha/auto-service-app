@@ -1,18 +1,17 @@
 package com.example.autoserviceapp.dto.mapper.impl;
 
-import java.util.Optional;
 import com.example.autoserviceapp.dto.CarRequestDto;
 import com.example.autoserviceapp.dto.mapper.RequestMapper;
 import com.example.autoserviceapp.model.Car;
 import com.example.autoserviceapp.model.Owner;
 import com.example.autoserviceapp.service.EntityService;
+import java.util.Optional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
 @AllArgsConstructor
 public class CarRequestMapper implements RequestMapper<Car, CarRequestDto> {
-
     private EntityService<Owner, Long> ownerService;
 
     @Override

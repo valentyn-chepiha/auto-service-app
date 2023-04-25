@@ -24,14 +24,14 @@ public class DetailController {
 
     @PostMapping
     public DetailResponseDto createDetail(@RequestBody DetailRequestDto detailRequestDto) {
-        Detail detail =  detailRequestMapper.toEntity(detailRequestDto);
+        Detail detail = detailRequestMapper.toEntity(detailRequestDto);
         return detailResponseMapper.toDto(detailService.add(detail));
     }
 
     @PutMapping
     public DetailResponseDto updateDetail(@RequestParam(name = "id") Long id,
                                           @RequestBody DetailRequestDto detailRequestDto) {
-        Detail detail =  detailRequestMapper.toEntity(detailRequestDto);
+        Detail detail = detailRequestMapper.toEntity(detailRequestDto);
         detail.setId(id);
         return detailResponseMapper.toDto(detailService.update(detail));
     }

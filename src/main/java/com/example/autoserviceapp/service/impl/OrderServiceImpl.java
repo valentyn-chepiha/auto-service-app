@@ -1,10 +1,5 @@
 package com.example.autoserviceapp.service.impl;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
 import com.example.autoserviceapp.model.Detail;
 import com.example.autoserviceapp.model.Operation;
 import com.example.autoserviceapp.model.Order;
@@ -13,13 +8,17 @@ import com.example.autoserviceapp.repository.DetailRepository;
 import com.example.autoserviceapp.repository.OrderRepository;
 import com.example.autoserviceapp.service.EntityOrderService;
 import com.example.autoserviceapp.service.EntityService;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
 public class OrderServiceImpl implements EntityOrderService<Order, Long> {
-
     private OrderRepository orderRepository;
     private DetailRepository detailRepository;
     private EntityService<Owner, Long> ownerService;
@@ -65,8 +64,8 @@ public class OrderServiceImpl implements EntityOrderService<Order, Long> {
     public Order updateStatus(Long id, String statusName) {
         Order order = orderRepository.findById(id).get();
         order.setStatus(Order.StatusService.valueOf(statusName));
-        if(Order.StatusService.valueOf(statusName) == Order.StatusService.DONE ||
-            Order.StatusService.valueOf(statusName) == Order.StatusService.FAIL) {
+        if (Order.StatusService.valueOf(statusName) == Order.StatusService.DONE
+                || Order.StatusService.valueOf(statusName) == Order.StatusService.FAIL) {
             order.setDateEnd(LocalDate.now());
         }
         return orderRepository.save(order);
@@ -93,8 +92,10 @@ public class OrderServiceImpl implements EntityOrderService<Order, Long> {
 
         int countOrders = ownerService.get(order.getOwner().getId()).get().getOrders().size();
         BigDecimal totalCost = new BigDecimal(0);
-        totalCost = totalCost.add(totalOperation.multiply(BigDecimal.valueOf(1 - 2 * countOrders / 100)));
-        totalCost = totalCost.add(totalDetail.multiply(BigDecimal.valueOf(1 - countOrders / 100)));
+        totalCost = totalCost.add(totalOperation.multiply(BigDecimal
+                .valueOf(1 - 2 * countOrders / 100)));
+        totalCost = totalCost.add(totalDetail.multiply(BigDecimal
+                .valueOf(1 - countOrders / 100)));
         return totalCost;
     }
 }

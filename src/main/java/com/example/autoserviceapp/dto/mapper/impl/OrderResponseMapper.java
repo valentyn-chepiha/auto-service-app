@@ -1,11 +1,11 @@
 package com.example.autoserviceapp.dto.mapper.impl;
 
-import java.util.stream.Collectors;
 import com.example.autoserviceapp.dto.OrderResponseDto;
 import com.example.autoserviceapp.dto.mapper.ResponseMapper;
 import com.example.autoserviceapp.model.Detail;
 import com.example.autoserviceapp.model.Operation;
 import com.example.autoserviceapp.model.Order;
+import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 
 @Component

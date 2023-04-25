@@ -1,8 +1,5 @@
 package com.example.autoserviceapp.controller;
 
-import java.math.BigDecimal;
-import java.util.List;
-import java.util.stream.Collectors;
 import com.example.autoserviceapp.dto.MasterRequestDto;
 import com.example.autoserviceapp.dto.MasterResponseDto;
 import com.example.autoserviceapp.dto.OperationResponseDto;
@@ -11,6 +8,9 @@ import com.example.autoserviceapp.dto.mapper.ResponseMapper;
 import com.example.autoserviceapp.model.Master;
 import com.example.autoserviceapp.model.Operation;
 import com.example.autoserviceapp.service.EntityMasterService;
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

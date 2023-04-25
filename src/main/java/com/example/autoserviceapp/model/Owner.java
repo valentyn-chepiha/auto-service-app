@@ -20,7 +20,7 @@ import lombok.Setter;
 @Table(name = "owners")
 @NoArgsConstructor
 @AllArgsConstructor
-public class        Owner {
+public class Owner {
     @Id
     @GeneratedValue(generator = "owners_id_seq", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "owners_id_seq", sequenceName = "owners_id_seq", allocationSize = 1)

@@ -1,12 +1,12 @@
 package com.example.autoserviceapp.controller;
 
-import java.math.BigDecimal;
 import com.example.autoserviceapp.dto.OrderRequestDto;
 import com.example.autoserviceapp.dto.OrderResponseDto;
 import com.example.autoserviceapp.dto.mapper.RequestMapper;
 import com.example.autoserviceapp.dto.mapper.ResponseMapper;
 import com.example.autoserviceapp.model.Order;
 import com.example.autoserviceapp.service.EntityOrderService;
+import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,7 +27,7 @@ public class OrderController {
     private EntityOrderService<Order, Long> orderService;
 
     @PostMapping
-    public OrderResponseDto createOrder(@RequestBody OrderRequestDto dto){
+    public OrderResponseDto createOrder(@RequestBody OrderRequestDto dto) {
         return orderResponseMapper.toDto(orderService.add(orderRequestMapper.toEntity(dto)));
     }
 
@@ -39,7 +39,7 @@ public class OrderController {
 
     @PutMapping
     public OrderResponseDto updateOrder(@RequestParam(name = "id") Long id,
-                                        @RequestBody OrderRequestDto dto){
+                                        @RequestBody OrderRequestDto dto) {
         Order order = orderRequestMapper.toEntity(dto);
         order.setId(id);
         return orderResponseMapper.toDto(orderService.update(order));
@@ -47,12 +47,12 @@ public class OrderController {
 
     @PutMapping("/status")
     public OrderResponseDto updateOrderStatus(@RequestParam(name = "id") Long id,
-                                              @RequestParam(name = "status") String status){
+                                              @RequestParam(name = "status") String status) {
         return orderResponseMapper.toDto(orderService.updateStatus(id, status));
     }
 
     @GetMapping
-    public BigDecimal getTotal(@RequestParam(name = "id") Long id){
+    public BigDecimal getTotal(@RequestParam(name = "id") Long id) {
         return orderService.calculateOrder(id);
     }
 }

@@ -1,11 +1,11 @@
 package com.example.autoserviceapp.service.impl;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
 import com.example.autoserviceapp.model.Detail;
 import com.example.autoserviceapp.repository.DetailRepository;
 import com.example.autoserviceapp.service.EntityOperationService;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

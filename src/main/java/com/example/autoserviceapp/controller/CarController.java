@@ -25,14 +25,14 @@ public class CarController {
 
     @PostMapping
     public CarResponseDto createCar(@RequestBody CarRequestDto carRequestDto) {
-        Car car = carService.add(carRequestMapper.toEntity(carRequestDto));
+        Car car = carService.add(carRequestMapper.toModel(carRequestDto));
         return carResponseDto.toDto(car);
     }
 
     @PutMapping
     public CarResponseDto updateCar(@RequestParam(name = "id") Long id,
                                     @RequestBody CarRequestDto carRequestDto) {
-        Car car = carRequestMapper.toEntity(carRequestDto);
+        Car car = carRequestMapper.toModel(carRequestDto);
         car.setId(id);
         return carResponseDto.toDto(carService.update(car));
     }

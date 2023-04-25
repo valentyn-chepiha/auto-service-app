@@ -17,7 +17,7 @@ public class OwnerRequestMapper implements RequestMapper<Owner, OwnerRequestDto>
     private OrderRepository orderRepository;
 
     @Override
-    public Owner toEntity(OwnerRequestDto dto) {
+    public Owner toModel(OwnerRequestDto dto) {
         Owner entity = new Owner();
         entity.setName(dto.getName());
 

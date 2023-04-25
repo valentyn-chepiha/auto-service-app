@@ -17,7 +17,7 @@ public class OperationRequestMapper implements RequestMapper<Operation, Operatio
     private EntityOrderService<Order, Long> orderService;
 
     @Override
-    public Operation toEntity(OperationRequestDto dto) {
+    public Operation toModel(OperationRequestDto dto) {
         Operation entity = new Operation();
         entity.setCost(dto.getCost());
         entity.setMaster(masterService.get(dto.getMasterId()).get());

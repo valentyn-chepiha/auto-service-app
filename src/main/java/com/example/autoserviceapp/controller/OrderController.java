@@ -28,7 +28,7 @@ public class OrderController {
 
     @PostMapping
     public OrderResponseDto createOrder(@RequestBody OrderRequestDto dto) {
-        return orderResponseMapper.toDto(orderService.add(orderRequestMapper.toEntity(dto)));
+        return orderResponseMapper.toDto(orderService.add(orderRequestMapper.toModel(dto)));
     }
 
     @PostMapping("/{id}")
@@ -40,7 +40,7 @@ public class OrderController {
     @PutMapping
     public OrderResponseDto updateOrder(@RequestParam(name = "id") Long id,
                                         @RequestBody OrderRequestDto dto) {
-        Order order = orderRequestMapper.toEntity(dto);
+        Order order = orderRequestMapper.toModel(dto);
         order.setId(id);
         return orderResponseMapper.toDto(orderService.update(order));
     }

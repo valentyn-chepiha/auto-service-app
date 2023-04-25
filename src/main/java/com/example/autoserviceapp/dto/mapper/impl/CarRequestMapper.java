@@ -15,7 +15,7 @@ public class CarRequestMapper implements RequestMapper<Car, CarRequestDto> {
     private EntityService<Owner, Long> ownerService;
 
     @Override
-    public Car toEntity(CarRequestDto dto) {
+    public Car toModel(CarRequestDto dto) {
         Car car = new Car();
         car.setBrand(dto.getBrand());
         car.setCarNumber(dto.getCarNumber());

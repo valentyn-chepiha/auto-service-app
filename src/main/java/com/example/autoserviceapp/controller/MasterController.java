@@ -32,14 +32,14 @@ public class MasterController {
 
     @PostMapping
     public MasterResponseDto createMaster(@RequestBody MasterRequestDto requestDto) {
-        Master master = masterService.add(masterRequestMapper.toEntity(requestDto));
+        Master master = masterService.add(masterRequestMapper.toModel(requestDto));
         return masterResponseMapper.toDto(master);
     }
 
     @PutMapping
     public MasterResponseDto updateMaster(@RequestParam(name = "id") Long id,
                                           @RequestBody MasterRequestDto requestDto) {
-        Master master = masterRequestMapper.toEntity(requestDto);
+        Master master = masterRequestMapper.toModel(requestDto);
         master.setId(id);
         return masterResponseMapper.toDto(masterService.update(master));
     }

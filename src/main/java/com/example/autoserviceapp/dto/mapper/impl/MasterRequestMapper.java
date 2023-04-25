@@ -15,7 +15,7 @@ public class MasterRequestMapper implements RequestMapper<Master, MasterRequestD
     private OperationRepository repairRepository;
 
     @Override
-    public Master toEntity(MasterRequestDto dto) {
+    public Master toModel(MasterRequestDto dto) {
         Master master = new Master();
         master.setPib(dto.getPib());
         Set<Long> repairIds = new HashSet<>(dto.getRepairIds());

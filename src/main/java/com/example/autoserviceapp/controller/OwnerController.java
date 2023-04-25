@@ -31,13 +31,13 @@ public class OwnerController {
 
     @PostMapping
     public OwnerResponseDto createOwner(@RequestBody OwnerRequestDto requestDto) {
-        return ownerResponseMapper.toDto(ownerService.add(ownerRequestMapper.toEntity(requestDto)));
+        return ownerResponseMapper.toDto(ownerService.add(ownerRequestMapper.toModel(requestDto)));
     }
 
     @PutMapping
     public OwnerResponseDto updateOwner(@RequestParam(name = "id") Long id,
                                         @RequestBody OwnerRequestDto requestDto) {
-        Owner owner = ownerRequestMapper.toEntity(requestDto);
+        Owner owner = ownerRequestMapper.toModel(requestDto);
         owner.setId(id);
         return ownerResponseMapper.toDto(ownerService.update(owner));
     }

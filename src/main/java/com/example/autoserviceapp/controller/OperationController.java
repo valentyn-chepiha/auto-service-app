@@ -25,13 +25,13 @@ public class OperationController {
 
     @PostMapping
     public OperationResponseDto createOperation(@RequestBody OperationRequestDto dto) {
-        return responseMapper.toDto(operationService.add(requestMapper.toEntity(dto)));
+        return responseMapper.toDto(operationService.add(requestMapper.toModel(dto)));
     }
 
     @PutMapping
     public OperationResponseDto updateOperation(@RequestParam(name = "id") Long id,
                                                 @RequestBody OperationRequestDto dto) {
-        Operation operation = requestMapper.toEntity(dto);
+        Operation operation = requestMapper.toModel(dto);
         operation.setId(id);
         return responseMapper.toDto(operationService.update(operation));
     }

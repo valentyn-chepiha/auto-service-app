@@ -23,7 +23,7 @@ public class OrderRequestMapper implements RequestMapper<Order, OrderRequestDto>
     private EntityService<Owner, Long> ownerService;
 
     @Override
-    public Order toEntity(OrderRequestDto dto) {
+    public Order toModel(OrderRequestDto dto) {
         Order entity = new Order();
         entity.setCar(carService.get(dto.getCarId()).get());
         entity.setDescription(dto.getDescription());

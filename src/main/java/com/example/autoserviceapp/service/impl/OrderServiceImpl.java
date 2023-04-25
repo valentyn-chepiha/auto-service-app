@@ -71,31 +71,34 @@ public class OrderServiceImpl implements EntityOrderService<Order, Long> {
         return orderRepository.save(order);
     }
 
+    private BigDecimal getTotalDetail(Order order) {
+        return order.getDetails().stream()
+                .map(Detail::getPrice)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
+    private BigDecimal getTotalOperation(Order order) {
+        if (order.getOperations().size() == 0) {
+            return BigDecimal.valueOf(500);
+        }
+        return  order.getOperations().stream()
+                .map(Operation::getCost)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
     @Override
     public BigDecimal calculateOrder(Long id) {
         Order order = orderRepository.findById(id).get();
-        BigDecimal totalDetail = order.getDetails().stream()
-                .map(Detail::getPrice)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
-        BigDecimal totalOperation = order.getOperations().stream()
-                .map(Operation::getCost)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
-
-        if (order.getOperations().size() == 0) {
-            totalOperation = BigDecimal.valueOf(500);
-        }
+        BigDecimal totalDetail = getTotalDetail(order);
+        BigDecimal totalOperation = getTotalOperation(order);
 
         BigDecimal total = new BigDecimal(0);
         total = total.add(totalDetail);
-        total = total.add(totalOperation);
-        order.setTotal(total);
+        order.setTotal(total.add(totalOperation));
 
         int countOrders = ownerService.get(order.getOwner().getId()).get().getOrders().size();
-        BigDecimal totalCost = new BigDecimal(0);
-        totalCost = totalCost.add(totalOperation.multiply(BigDecimal
-                .valueOf(1 - 2 * countOrders / 100)));
-        totalCost = totalCost.add(totalDetail.multiply(BigDecimal
-                .valueOf(1 - countOrders / 100)));
-        return totalCost;
+        double discount = (double) countOrders / 100;
+        BigDecimal totalCost = totalOperation.multiply(BigDecimal.valueOf(1 - 2 * discount));
+        return totalCost.add(totalDetail.multiply(BigDecimal.valueOf(1 - discount)));
     }
 }

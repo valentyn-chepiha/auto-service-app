@@ -8,11 +8,11 @@ import com.example.autoserviceapp.service.EntityMasterService;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class MasterServiceImpl implements EntityMasterService<Master, Long> {
     private static final BigDecimal SALARY_COEFFICIENT = BigDecimal.valueOf(0.4);
 

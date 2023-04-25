@@ -11,11 +11,11 @@ import com.example.autoserviceapp.service.EntityOperationService;
 import com.example.autoserviceapp.service.EntityService;
 import java.util.HashSet;
 import java.util.Set;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class OrderRequestMapper implements RequestMapper<Order, OrderRequestDto> {
     private EntityService<Car, Long> carService;
     private EntityOperationService<Detail, Long> detailService;

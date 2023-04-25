@@ -13,7 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,7 +23,7 @@ import lombok.Setter;
 @Setter
 @Table(name = "services")
 @NoArgsConstructor
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class Operation {
     @Id
     @GeneratedValue(generator = "services_id_seq", strategy = GenerationType.SEQUENCE)
@@ -43,7 +43,7 @@ public class Operation {
     private StatusPaid status;
 
     @Getter
-    @AllArgsConstructor
+    @RequiredArgsConstructor
     public enum StatusPaid {
         PAID("paid"),
         NOT_PAID("not_paid");

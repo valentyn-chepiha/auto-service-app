@@ -7,7 +7,7 @@ import com.example.autoserviceapp.dto.mapper.ResponseMapper;
 import com.example.autoserviceapp.model.Order;
 import com.example.autoserviceapp.service.EntityOrderService;
 import java.math.BigDecimal;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,9 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/order")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class OrderController {
-
     private ResponseMapper<Order, OrderResponseDto> orderResponseMapper;
     private RequestMapper<Order, OrderRequestDto> orderRequestMapper;
     private EntityOrderService<Order, Long> orderService;

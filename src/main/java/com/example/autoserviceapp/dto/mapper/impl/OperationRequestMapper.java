@@ -7,11 +7,11 @@ import com.example.autoserviceapp.model.Operation;
 import com.example.autoserviceapp.model.Order;
 import com.example.autoserviceapp.service.EntityMasterService;
 import com.example.autoserviceapp.service.EntityOrderService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class OperationRequestMapper implements RequestMapper<Operation, OperationRequestDto> {
     private EntityMasterService<Master, Long> masterService;
     private EntityOrderService<Order, Long> orderService;

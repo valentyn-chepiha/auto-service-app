@@ -6,7 +6,7 @@ import com.example.autoserviceapp.dto.mapper.RequestMapper;
 import com.example.autoserviceapp.dto.mapper.ResponseMapper;
 import com.example.autoserviceapp.model.Detail;
 import com.example.autoserviceapp.service.EntityService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/detail")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class DetailController {
     private RequestMapper<Detail, DetailRequestDto> detailRequestMapper;
     private ResponseMapper<Detail, DetailResponseDto> detailResponseMapper;

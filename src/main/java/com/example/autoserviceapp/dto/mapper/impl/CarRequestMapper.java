@@ -6,11 +6,11 @@ import com.example.autoserviceapp.model.Car;
 import com.example.autoserviceapp.model.Owner;
 import com.example.autoserviceapp.service.EntityService;
 import java.util.Optional;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class CarRequestMapper implements RequestMapper<Car, CarRequestDto> {
     private EntityService<Owner, Long> ownerService;
 

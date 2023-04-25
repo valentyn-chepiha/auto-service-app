@@ -20,7 +20,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -64,7 +64,7 @@ public class Order {
     private Owner owner;
 
     @Getter
-    @AllArgsConstructor
+    @RequiredArgsConstructor
     public enum StatusService {
         ACCEPTED("Accepted"),
         PROCESSING("Processing"),

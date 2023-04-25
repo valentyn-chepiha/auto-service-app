@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,7 +19,7 @@ import lombok.Setter;
 @Getter
 @Table(name = "owners")
 @NoArgsConstructor
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class Owner {
     @Id
     @GeneratedValue(generator = "owners_id_seq", strategy = GenerationType.SEQUENCE)

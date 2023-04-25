@@ -5,11 +5,11 @@ import com.example.autoserviceapp.repository.CarRepository;
 import com.example.autoserviceapp.service.EntityService;
 import java.util.List;
 import java.util.Optional;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class CarServiceImpl implements EntityService<Car, Long> {
     private CarRepository carRepository;
 

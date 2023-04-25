@@ -6,11 +6,11 @@ import com.example.autoserviceapp.model.Master;
 import com.example.autoserviceapp.repository.OperationRepository;
 import java.util.HashSet;
 import java.util.Set;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class MasterRequestMapper implements RequestMapper<Master, MasterRequestDto> {
     private OperationRepository repairRepository;
 

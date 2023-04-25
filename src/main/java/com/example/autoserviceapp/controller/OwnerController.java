@@ -10,7 +10,7 @@ import com.example.autoserviceapp.model.Owner;
 import com.example.autoserviceapp.service.EntityService;
 import java.util.List;
 import java.util.stream.Collectors;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -21,9 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/owner")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class OwnerController {
-
     private EntityService<Owner, Long> ownerService;
     private RequestMapper<Owner, OwnerRequestDto> ownerRequestMapper;
     private ResponseMapper<Owner, OwnerResponseDto> ownerResponseMapper;

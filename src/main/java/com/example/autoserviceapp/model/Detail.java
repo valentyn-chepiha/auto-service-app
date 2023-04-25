@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,7 +17,7 @@ import lombok.Setter;
 @Getter
 @Table(name = "details")
 @NoArgsConstructor
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class Detail {
     @Id
     @GeneratedValue(generator = "details_id_seq", strategy = GenerationType.SEQUENCE)

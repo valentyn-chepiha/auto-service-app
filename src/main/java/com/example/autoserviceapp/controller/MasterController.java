@@ -11,7 +11,7 @@ import com.example.autoserviceapp.service.EntityMasterService;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -22,9 +22,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/master")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class MasterController {
-
     private RequestMapper<Master, MasterRequestDto> masterRequestMapper;
     private ResponseMapper<Master, MasterResponseDto> masterResponseMapper;
     private ResponseMapper<Operation, OperationResponseDto> operationResponseMapper;

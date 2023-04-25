@@ -6,7 +6,7 @@ import com.example.autoserviceapp.dto.mapper.RequestMapper;
 import com.example.autoserviceapp.dto.mapper.ResponseMapper;
 import com.example.autoserviceapp.model.Operation;
 import com.example.autoserviceapp.service.EntityOperationService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,9 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/operation")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class OperationController {
-
     private ResponseMapper<Operation, OperationResponseDto> responseMapper;
     private RequestMapper<Operation, OperationRequestDto> requestMapper;
     private EntityOperationService<Operation, Long> operationService;

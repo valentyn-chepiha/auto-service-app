@@ -7,11 +7,11 @@ import com.example.autoserviceapp.repository.CarRepository;
 import com.example.autoserviceapp.repository.OrderRepository;
 import java.util.HashSet;
 import java.util.Set;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class OwnerRequestMapper implements RequestMapper<Owner, OwnerRequestDto> {
     private CarRepository carRepository;
     private OrderRepository orderRepository;

@@ -11,14 +11,12 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import lombok.RequiredArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
 @Table(name = "masters")
-@NoArgsConstructor
 @RequiredArgsConstructor
 public class Master {
     @Id

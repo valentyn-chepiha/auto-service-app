@@ -20,14 +20,16 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Setter
 @Getter
 @Table(name = "orders")
+@RequiredArgsConstructor
 public class Order {
     @Id
     @GeneratedValue(generator = "orders_id_seq", strategy = GenerationType.SEQUENCE)
@@ -64,7 +66,7 @@ public class Order {
     private Owner owner;
 
     @Getter
-    @RequiredArgsConstructor
+    @AllArgsConstructor
     public enum StatusService {
         ACCEPTED("Accepted"),
         PROCESSING("Processing"),

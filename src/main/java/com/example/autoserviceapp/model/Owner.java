@@ -11,14 +11,12 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import lombok.RequiredArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Setter
 @Getter
 @Table(name = "owners")
-@NoArgsConstructor
 @RequiredArgsConstructor
 public class Owner {
     @Id

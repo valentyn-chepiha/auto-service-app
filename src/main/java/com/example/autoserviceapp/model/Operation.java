@@ -13,16 +13,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
 @Table(name = "services")
-@NoArgsConstructor
 @RequiredArgsConstructor
 public class Operation {
     @Id
@@ -43,7 +42,7 @@ public class Operation {
     private StatusPaid status;
 
     @Getter
-    @RequiredArgsConstructor
+    @AllArgsConstructor
     public enum StatusPaid {
         PAID("paid"),
         NOT_PAID("not_paid");

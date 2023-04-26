@@ -2,7 +2,7 @@ package com.example.autoserviceapp.service.impl;
 
 import com.example.autoserviceapp.model.Car;
 import com.example.autoserviceapp.repository.CarRepository;
-import com.example.autoserviceapp.service.EntityService;
+import com.example.autoserviceapp.service.BaseService;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class CarServiceImpl implements EntityService<Car, Long> {
+public class CarServiceImpl implements BaseService<Car, Long> {
     private CarRepository carRepository;
 
     @Override

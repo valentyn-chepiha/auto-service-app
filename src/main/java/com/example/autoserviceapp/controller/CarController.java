@@ -5,7 +5,7 @@ import com.example.autoserviceapp.dto.CarResponseDto;
 import com.example.autoserviceapp.dto.mapper.RequestMapper;
 import com.example.autoserviceapp.dto.mapper.ResponseMapper;
 import com.example.autoserviceapp.model.Car;
-import com.example.autoserviceapp.service.EntityService;
+import com.example.autoserviceapp.service.BaseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/car")
 @RequiredArgsConstructor
 public class CarController {
-    private EntityService<Car, Long> carService;
+    private BaseService<Car, Long> carService;
     private RequestMapper<Car, CarRequestDto> carRequestMapper;
     private ResponseMapper<Car, CarResponseDto> carResponseDto;
 

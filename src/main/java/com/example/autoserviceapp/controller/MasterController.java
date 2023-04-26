@@ -7,7 +7,7 @@ import com.example.autoserviceapp.dto.mapper.RequestMapper;
 import com.example.autoserviceapp.dto.mapper.ResponseMapper;
 import com.example.autoserviceapp.model.Master;
 import com.example.autoserviceapp.model.Operation;
-import com.example.autoserviceapp.service.EntityMasterService;
+import com.example.autoserviceapp.service.MasterService;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,7 +27,7 @@ public class MasterController {
     private RequestMapper<Master, MasterRequestDto> masterRequestMapper;
     private ResponseMapper<Master, MasterResponseDto> masterResponseMapper;
     private ResponseMapper<Operation, OperationResponseDto> operationResponseMapper;
-    private EntityMasterService<Master, Long> masterService;
+    private MasterService<Master, Long> masterService;
 
     @PostMapping
     public MasterResponseDto createMaster(@RequestBody MasterRequestDto requestDto) {

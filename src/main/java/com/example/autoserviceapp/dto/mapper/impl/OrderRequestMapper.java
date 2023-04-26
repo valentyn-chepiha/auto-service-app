@@ -7,8 +7,8 @@ import com.example.autoserviceapp.model.Detail;
 import com.example.autoserviceapp.model.Operation;
 import com.example.autoserviceapp.model.Order;
 import com.example.autoserviceapp.model.Owner;
-import com.example.autoserviceapp.service.EntityOperationService;
-import com.example.autoserviceapp.service.EntityService;
+import com.example.autoserviceapp.service.OperationService;
+import com.example.autoserviceapp.service.BaseService;
 import java.util.HashSet;
 import java.util.Set;
 import lombok.RequiredArgsConstructor;
@@ -17,10 +17,10 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class OrderRequestMapper implements RequestMapper<Order, OrderRequestDto> {
-    private EntityService<Car, Long> carService;
-    private EntityOperationService<Detail, Long> detailService;
-    private EntityOperationService<Operation, Long> operationService;
-    private EntityService<Owner, Long> ownerService;
+    private BaseService<Car, Long> carService;
+    private OperationService<Detail, Long> detailService;
+    private OperationService<Operation, Long> operationService;
+    private BaseService<Owner, Long> ownerService;
 
     @Override
     public Order toModel(OrderRequestDto dto) {

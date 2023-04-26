@@ -5,7 +5,7 @@ import com.example.autoserviceapp.dto.DetailResponseDto;
 import com.example.autoserviceapp.dto.mapper.RequestMapper;
 import com.example.autoserviceapp.dto.mapper.ResponseMapper;
 import com.example.autoserviceapp.model.Detail;
-import com.example.autoserviceapp.service.EntityService;
+import com.example.autoserviceapp.service.BaseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DetailController {
     private RequestMapper<Detail, DetailRequestDto> detailRequestMapper;
     private ResponseMapper<Detail, DetailResponseDto> detailResponseMapper;
-    private EntityService<Detail, Long> detailService;
+    private BaseService<Detail, Long> detailService;
 
     @PostMapping
     public DetailResponseDto createDetail(@RequestBody DetailRequestDto detailRequestDto) {

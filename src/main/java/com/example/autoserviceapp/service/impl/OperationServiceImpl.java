@@ -2,7 +2,7 @@ package com.example.autoserviceapp.service.impl;
 
 import com.example.autoserviceapp.model.Operation;
 import com.example.autoserviceapp.repository.OperationRepository;
-import com.example.autoserviceapp.service.EntityOperationService;
+import com.example.autoserviceapp.service.OperationService;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class OperationServiceImpl implements EntityOperationService<Operation, Long> {
+public class OperationServiceImpl implements OperationService<Operation, Long> {
     private OperationRepository operationRepository;
 
     @Override

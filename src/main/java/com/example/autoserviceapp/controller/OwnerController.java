@@ -7,7 +7,7 @@ import com.example.autoserviceapp.dto.mapper.RequestMapper;
 import com.example.autoserviceapp.dto.mapper.ResponseMapper;
 import com.example.autoserviceapp.model.Order;
 import com.example.autoserviceapp.model.Owner;
-import com.example.autoserviceapp.service.EntityService;
+import com.example.autoserviceapp.service.BaseService;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/owner")
 @RequiredArgsConstructor
 public class OwnerController {
-    private EntityService<Owner, Long> ownerService;
+    private BaseService<Owner, Long> ownerService;
     private RequestMapper<Owner, OwnerRequestDto> ownerRequestMapper;
     private ResponseMapper<Owner, OwnerResponseDto> ownerResponseMapper;
     private ResponseMapper<Order, OrderResponseDto> orderResponseMapper;

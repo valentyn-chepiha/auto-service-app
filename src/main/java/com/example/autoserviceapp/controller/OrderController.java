@@ -5,7 +5,7 @@ import com.example.autoserviceapp.dto.OrderResponseDto;
 import com.example.autoserviceapp.dto.mapper.RequestMapper;
 import com.example.autoserviceapp.dto.mapper.ResponseMapper;
 import com.example.autoserviceapp.model.Order;
-import com.example.autoserviceapp.service.EntityOrderService;
+import com.example.autoserviceapp.service.OrderService;
 import java.math.BigDecimal;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrderController {
     private ResponseMapper<Order, OrderResponseDto> orderResponseMapper;
     private RequestMapper<Order, OrderRequestDto> orderRequestMapper;
-    private EntityOrderService<Order, Long> orderService;
+    private OrderService<Order, Long> orderService;
 
     @PostMapping
     public OrderResponseDto createOrder(@RequestBody OrderRequestDto dto) {

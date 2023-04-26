@@ -6,8 +6,8 @@ import com.example.autoserviceapp.model.Order;
 import com.example.autoserviceapp.model.Owner;
 import com.example.autoserviceapp.repository.DetailRepository;
 import com.example.autoserviceapp.repository.OrderRepository;
-import com.example.autoserviceapp.service.EntityOrderService;
-import com.example.autoserviceapp.service.EntityService;
+import com.example.autoserviceapp.service.OrderService;
+import com.example.autoserviceapp.service.BaseService;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
@@ -18,10 +18,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class OrderServiceImpl implements EntityOrderService<Order, Long> {
+public class OrderServiceImpl implements OrderService<Order, Long> {
     private OrderRepository orderRepository;
     private DetailRepository detailRepository;
-    private EntityService<Owner, Long> ownerService;
+    private BaseService<Owner, Long> ownerService;
 
     @Override
     public List<Order> getAllByIds(Set<Long> ids) {

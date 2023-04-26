@@ -4,7 +4,7 @@ import com.example.autoserviceapp.model.Master;
 import com.example.autoserviceapp.model.Operation;
 import com.example.autoserviceapp.repository.MasterRepository;
 import com.example.autoserviceapp.repository.OperationRepository;
-import com.example.autoserviceapp.service.EntityMasterService;
+import com.example.autoserviceapp.service.MasterService;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class MasterServiceImpl implements EntityMasterService<Master, Long> {
+public class MasterServiceImpl implements MasterService<Master, Long> {
     private static final BigDecimal SALARY_COEFFICIENT = BigDecimal.valueOf(0.4);
 
     private MasterRepository masterRepository;

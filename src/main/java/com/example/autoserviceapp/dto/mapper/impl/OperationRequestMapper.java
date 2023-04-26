@@ -5,16 +5,16 @@ import com.example.autoserviceapp.dto.mapper.RequestMapper;
 import com.example.autoserviceapp.model.Master;
 import com.example.autoserviceapp.model.Operation;
 import com.example.autoserviceapp.model.Order;
-import com.example.autoserviceapp.service.EntityMasterService;
-import com.example.autoserviceapp.service.EntityOrderService;
+import com.example.autoserviceapp.service.MasterService;
+import com.example.autoserviceapp.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
 public class OperationRequestMapper implements RequestMapper<Operation, OperationRequestDto> {
-    private EntityMasterService<Master, Long> masterService;
-    private EntityOrderService<Order, Long> orderService;
+    private MasterService<Master, Long> masterService;
+    private OrderService<Order, Long> orderService;
 
     @Override
     public Operation toModel(OperationRequestDto dto) {

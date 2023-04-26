@@ -4,7 +4,7 @@ import com.example.autoserviceapp.dto.CarRequestDto;
 import com.example.autoserviceapp.dto.mapper.RequestMapper;
 import com.example.autoserviceapp.model.Car;
 import com.example.autoserviceapp.model.Owner;
-import com.example.autoserviceapp.service.EntityService;
+import com.example.autoserviceapp.service.BaseService;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class CarRequestMapper implements RequestMapper<Car, CarRequestDto> {
-    private EntityService<Owner, Long> ownerService;
+    private BaseService<Owner, Long> ownerService;
 
     @Override
     public Car toModel(CarRequestDto dto) {

@@ -5,7 +5,7 @@ import com.example.autoserviceapp.dto.OperationResponseDto;
 import com.example.autoserviceapp.dto.mapper.RequestMapper;
 import com.example.autoserviceapp.dto.mapper.ResponseMapper;
 import com.example.autoserviceapp.model.Operation;
-import com.example.autoserviceapp.service.EntityOperationService;
+import com.example.autoserviceapp.service.OperationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class OperationController {
     private ResponseMapper<Operation, OperationResponseDto> responseMapper;
     private RequestMapper<Operation, OperationRequestDto> requestMapper;
-    private EntityOperationService<Operation, Long> operationService;
+    private OperationService<Operation, Long> operationService;
 
     @PostMapping
     public OperationResponseDto createOperation(@RequestBody OperationRequestDto dto) {

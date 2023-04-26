@@ -7,5 +7,5 @@ import lombok.Data;
 public class MasterResponseDto {
     private Long id;
     private String pib;
-    private List<Long> repairIds;
+    private List<Long> operationIds;
 }

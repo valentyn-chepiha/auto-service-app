@@ -15,10 +15,10 @@ public class MasterResponseMapper implements ResponseMapper<Master, MasterRespon
         MasterResponseDto dto = new MasterResponseDto();
         dto.setId(entity.getId());
         dto.setPib(entity.getPib());
-        List<Long> repairIds = entity.getOperations().stream()
+        List<Long> operationIds = entity.getOperations().stream()
                 .map(Operation::getId)
                 .collect(Collectors.toList());
-        dto.setRepairIds(repairIds);
+        dto.setOperationIds(operationIds);
         return dto;
     }
 }

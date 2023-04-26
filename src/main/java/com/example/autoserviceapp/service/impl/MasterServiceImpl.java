@@ -17,7 +17,7 @@ public class MasterServiceImpl implements MasterService<Master, Long> {
     private static final BigDecimal SALARY_COEFFICIENT = BigDecimal.valueOf(0.4);
 
     private MasterRepository masterRepository;
-    private OperationRepository repairRepository;
+    private OperationRepository operationRepository;
 
     @Override
     public Master add(Master entity) {
@@ -46,7 +46,7 @@ public class MasterServiceImpl implements MasterService<Master, Long> {
                 .filter(j -> Operation.StatusPaid.NOT_PAID.getName()
                         .equals(j.getStatus().getName()))
                 .peek(j -> j.setStatus(Operation.StatusPaid.PAID))
-                .peek(j -> repairRepository.save(j))
+                .peek(j -> operationRepository.save(j))
                 .map(Operation::getCost)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
         return totalSum.multiply(SALARY_COEFFICIENT);

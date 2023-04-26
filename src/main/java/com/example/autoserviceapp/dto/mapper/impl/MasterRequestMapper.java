@@ -12,14 +12,14 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class MasterRequestMapper implements RequestMapper<Master, MasterRequestDto> {
-    private OperationRepository repairRepository;
+    private OperationRepository operationRepository;
 
     @Override
     public Master toModel(MasterRequestDto dto) {
         Master master = new Master();
         master.setPib(dto.getPib());
-        Set<Long> repairIds = new HashSet<>(dto.getRepairIds());
-        master.setOperations(repairRepository.findAllByIdIn(repairIds));
+        Set<Long> operationIds = new HashSet<>(dto.getOperationIds());
+        master.setOperations(operationRepository.findAllByIdIn(operationIds));
         return master;
     }
 }

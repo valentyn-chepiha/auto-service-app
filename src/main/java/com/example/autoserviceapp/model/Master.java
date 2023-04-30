@@ -2,7 +2,6 @@ package com.example.autoserviceapp.model;
 
 import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,6 +23,6 @@ public class Master {
     @SequenceGenerator(name = "masters_id_seq", sequenceName = "masters_id_seq", allocationSize = 1)
     private Long id;
     private String pib;
-    @OneToMany(mappedBy = "master", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "master")
     private List<Operation> operations;
 }

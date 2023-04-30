@@ -1,28 +1,27 @@
 package com.example.autoserviceapp.service.impl;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
 import com.example.autoserviceapp.model.Detail;
 import com.example.autoserviceapp.model.Operation;
 import com.example.autoserviceapp.model.Order;
 import com.example.autoserviceapp.model.Owner;
 import com.example.autoserviceapp.repository.DetailRepository;
 import com.example.autoserviceapp.repository.OrderRepository;
-import com.example.autoserviceapp.service.EntityOrderService;
-import com.example.autoserviceapp.service.EntityService;
-import lombok.AllArgsConstructor;
+import com.example.autoserviceapp.service.BaseService;
+import com.example.autoserviceapp.service.OrderService;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-@AllArgsConstructor
-public class OrderServiceImpl implements EntityOrderService<Order, Long> {
-
+@RequiredArgsConstructor
+public class OrderServiceImpl implements OrderService<Order, Long> {
     private OrderRepository orderRepository;
     private DetailRepository detailRepository;
-    private EntityService<Owner, Long> ownerService;
+    private BaseService<Owner, Long> ownerService;
 
     @Override
     public List<Order> getAllByIds(Set<Long> ids) {
@@ -65,36 +64,41 @@ public class OrderServiceImpl implements EntityOrderService<Order, Long> {
     public Order updateStatus(Long id, String statusName) {
         Order order = orderRepository.findById(id).get();
         order.setStatus(Order.StatusService.valueOf(statusName));
-        if(Order.StatusService.valueOf(statusName) == Order.StatusService.DONE ||
-            Order.StatusService.valueOf(statusName) == Order.StatusService.FAIL) {
+        if (Order.StatusService.valueOf(statusName) == Order.StatusService.DONE
+                || Order.StatusService.valueOf(statusName) == Order.StatusService.FAIL) {
             order.setDateEnd(LocalDate.now());
         }
         return orderRepository.save(order);
     }
 
+    private BigDecimal getTotalDetail(Order order) {
+        return order.getDetails().stream()
+                .map(Detail::getPrice)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
+    private BigDecimal getTotalOperation(Order order) {
+        if (order.getOperations().size() == 0) {
+            return BigDecimal.valueOf(500);
+        }
+        return order.getOperations().stream()
+                .map(Operation::getCost)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
     @Override
     public BigDecimal calculateOrder(Long id) {
         Order order = orderRepository.findById(id).get();
-        BigDecimal totalDetail = order.getDetails().stream()
-                .map(Detail::getPrice)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
-        BigDecimal totalOperation = order.getOperations().stream()
-                .map(Operation::getCost)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
-
-        if (order.getOperations().size() == 0) {
-            totalOperation = BigDecimal.valueOf(500);
-        }
+        BigDecimal totalDetail = getTotalDetail(order);
+        BigDecimal totalOperation = getTotalOperation(order);
 
         BigDecimal total = new BigDecimal(0);
         total = total.add(totalDetail);
-        total = total.add(totalOperation);
-        order.setTotal(total);
+        order.setTotal(total.add(totalOperation));
 
         int countOrders = ownerService.get(order.getOwner().getId()).get().getOrders().size();
-        BigDecimal totalCost = new BigDecimal(0);
-        totalCost = totalCost.add(totalOperation.multiply(BigDecimal.valueOf(1 - 2 * countOrders / 100)));
-        totalCost = totalCost.add(totalDetail.multiply(BigDecimal.valueOf(1 - countOrders / 100)));
-        return totalCost;
+        double discount = (double) countOrders / 100;
+        BigDecimal totalCost = totalOperation.multiply(BigDecimal.valueOf(1 - 2 * discount));
+        return totalCost.add(totalDetail.multiply(BigDecimal.valueOf(1 - discount)));
     }
 }

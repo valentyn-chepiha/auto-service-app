@@ -1,17 +1,16 @@
 package com.example.autoserviceapp.service.impl;
 
-import java.util.List;
-import java.util.Optional;
 import com.example.autoserviceapp.model.Owner;
 import com.example.autoserviceapp.repository.OwnerRepository;
-import com.example.autoserviceapp.service.EntityService;
-import lombok.AllArgsConstructor;
+import com.example.autoserviceapp.service.BaseService;
+import java.util.List;
+import java.util.Optional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-@AllArgsConstructor
-public class OwnerServiceImpl implements EntityService<Owner, Long> {
-
+@RequiredArgsConstructor
+public class OwnerServiceImpl implements BaseService<Owner, Long> {
     private OwnerRepository ownerRepository;
 
     @Override

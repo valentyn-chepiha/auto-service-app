@@ -1,17 +1,17 @@
 package com.example.autoserviceapp.service.impl;
 
+import com.example.autoserviceapp.model.Detail;
+import com.example.autoserviceapp.repository.DetailRepository;
+import com.example.autoserviceapp.service.OperationService;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import com.example.autoserviceapp.model.Detail;
-import com.example.autoserviceapp.repository.DetailRepository;
-import com.example.autoserviceapp.service.EntityOperationService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-@AllArgsConstructor
-public class DetailServiceImpl implements EntityOperationService<Detail, Long> {
+@RequiredArgsConstructor
+public class DetailServiceImpl implements OperationService<Detail, Long> {
     private DetailRepository detailRepository;
 
     @Override

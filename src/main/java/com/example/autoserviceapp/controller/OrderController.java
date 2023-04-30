@@ -1,13 +1,15 @@
 package com.example.autoserviceapp.controller;
 
-import java.math.BigDecimal;
 import com.example.autoserviceapp.dto.OrderRequestDto;
 import com.example.autoserviceapp.dto.OrderResponseDto;
 import com.example.autoserviceapp.dto.mapper.RequestMapper;
 import com.example.autoserviceapp.dto.mapper.ResponseMapper;
 import com.example.autoserviceapp.model.Order;
-import com.example.autoserviceapp.service.EntityOrderService;
-import lombok.AllArgsConstructor;
+import com.example.autoserviceapp.service.OrderService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import java.math.BigDecimal;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,40 +21,51 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/order")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class OrderController {
-
     private ResponseMapper<Order, OrderResponseDto> orderResponseMapper;
     private RequestMapper<Order, OrderRequestDto> orderRequestMapper;
-    private EntityOrderService<Order, Long> orderService;
+    private OrderService<Order, Long> orderService;
 
     @PostMapping
-    public OrderResponseDto createOrder(@RequestBody OrderRequestDto dto){
-        return orderResponseMapper.toDto(orderService.add(orderRequestMapper.toEntity(dto)));
+    @ApiOperation(value = "Add new order to DB", notes = "Return new order with id")
+    public OrderResponseDto createOrder(@RequestBody OrderRequestDto dto) {
+        return orderResponseMapper.toDto(orderService.add(orderRequestMapper.toModel(dto)));
     }
 
     @PostMapping("/{id}")
-    public OrderResponseDto addDetail(@PathVariable Long id,
-                                     @RequestParam(name = "id_detail") Long idDetail) {
+    @ApiOperation(value = "Add details to order", notes = "Return order from DB after update")
+    public OrderResponseDto addDetail(
+            @PathVariable @ApiParam(name = "id", value = "Order id") Long id,
+            @RequestParam(name = "id_detail")
+            @ApiParam(name = "id_detail", value = "Detail id") Long idDetail) {
         return orderResponseMapper.toDto(orderService.addDetail(id, idDetail));
     }
 
     @PutMapping
-    public OrderResponseDto updateOrder(@RequestParam(name = "id") Long id,
-                                        @RequestBody OrderRequestDto dto){
-        Order order = orderRequestMapper.toEntity(dto);
+    @ApiOperation(value = "Update info about order in DB",
+            notes = "Return order from DB after update")
+    public OrderResponseDto updateOrder(
+            @RequestParam(name = "id") @ApiParam(name = "id", value = "Order id") Long id,
+            @RequestBody OrderRequestDto dto) {
+        Order order = orderRequestMapper.toModel(dto);
         order.setId(id);
         return orderResponseMapper.toDto(orderService.update(order));
     }
 
     @PutMapping("/status")
-    public OrderResponseDto updateOrderStatus(@RequestParam(name = "id") Long id,
-                                              @RequestParam(name = "status") String status){
+    @ApiOperation(value = "Change status of order", notes = "Return order from DB after update")
+    public OrderResponseDto updateOrderStatus(
+            @RequestParam(name = "id") @ApiParam(name = "id", value = "Order id") Long id,
+            @RequestParam(name = "status")
+            @ApiParam(name = "status", value = "Order status") String status) {
         return orderResponseMapper.toDto(orderService.updateStatus(id, status));
     }
 
     @GetMapping
-    public BigDecimal getTotal(@RequestParam(name = "id") Long id){
+    @ApiOperation(value = "Get total summ", notes = "Return the order amount")
+    public BigDecimal getTotal(@RequestParam(name = "id")
+                                   @ApiParam(name = "id", value = "Order id") Long id) {
         return orderService.calculateOrder(id);
     }
 }

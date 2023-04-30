@@ -15,19 +15,20 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
 @Table(name = "services")
-@NoArgsConstructor
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class Operation {
     @Id
     @GeneratedValue(generator = "services_id_seq", strategy = GenerationType.SEQUENCE)
-    @SequenceGenerator(name = "services_id_seq", sequenceName = "services_id_seq", allocationSize = 1)
+    @SequenceGenerator(name = "services_id_seq",
+            sequenceName = "services_id_seq",
+            allocationSize = 1)
     private Long id;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "order_id", nullable = false)
@@ -43,7 +44,8 @@ public class Operation {
     @Getter
     @AllArgsConstructor
     public enum StatusPaid {
-        PAID("paid"), NOT_PAID("not_paid");
+        PAID("paid"),
+        NOT_PAID("not_paid");
 
         private String name;
     }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class DetailRequestMapper implements RequestMapper<Detail, DetailRequestDto> {
     @Override
-    public Detail toEntity(DetailRequestDto dto) {
+    public Detail toModel(DetailRequestDto dto) {
         Detail detail = new Detail();
         detail.setName(dto.getName());
         detail.setPrice(dto.getPrice());

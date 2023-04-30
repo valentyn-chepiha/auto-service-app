@@ -13,7 +13,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
@@ -23,12 +22,14 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Setter
 @Getter
 @Table(name = "orders")
+@RequiredArgsConstructor
 public class Order {
     @Id
     @GeneratedValue(generator = "orders_id_seq", strategy = GenerationType.SEQUENCE)
@@ -41,14 +42,14 @@ public class Order {
     private String description;
     @Column(name = "date_start")
     private LocalDate dateStart;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "orders_services",
-            joinColumns = @JoinColumn(name =  "order_id"),
+            joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "service_id")
     )
     private List<Operation> operations;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "orders_details",
             joinColumns = @JoinColumn(name = "order_id"),

@@ -1,23 +1,23 @@
 package com.example.autoserviceapp.service.impl;
 
-import java.math.BigDecimal;
-import java.util.List;
-import java.util.Optional;
 import com.example.autoserviceapp.model.Master;
 import com.example.autoserviceapp.model.Operation;
 import com.example.autoserviceapp.repository.MasterRepository;
 import com.example.autoserviceapp.repository.OperationRepository;
-import com.example.autoserviceapp.service.EntityMasterService;
-import lombok.AllArgsConstructor;
+import com.example.autoserviceapp.service.MasterService;
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.Optional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-@AllArgsConstructor
-public class MasterServiceImpl implements EntityMasterService<Master, Long> {
+@RequiredArgsConstructor
+public class MasterServiceImpl implements MasterService<Master, Long> {
     private static final BigDecimal SALARY_COEFFICIENT = BigDecimal.valueOf(0.4);
 
     private MasterRepository masterRepository;
-    private OperationRepository repairRepository;
+    private OperationRepository operationRepository;
 
     @Override
     public Master add(Master entity) {
@@ -43,9 +43,10 @@ public class MasterServiceImpl implements EntityMasterService<Master, Long> {
     public BigDecimal calculateSalary(Long id) {
         List<Operation> jobs = masterRepository.findById(id).get().getOperations();
         BigDecimal totalSum = jobs.stream()
-                .filter(j -> Operation.StatusPaid.NOT_PAID.getName().equals(j.getStatus().getName()))
+                .filter(j -> Operation.StatusPaid.NOT_PAID.getName()
+                        .equals(j.getStatus().getName()))
                 .peek(j -> j.setStatus(Operation.StatusPaid.PAID))
-                .peek(j -> repairRepository.save(j))
+                .peek(j -> operationRepository.save(j))
                 .map(Operation::getCost)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
         return totalSum.multiply(SALARY_COEFFICIENT);

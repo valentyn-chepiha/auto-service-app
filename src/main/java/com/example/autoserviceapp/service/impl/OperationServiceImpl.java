@@ -1,18 +1,17 @@
 package com.example.autoserviceapp.service.impl;
 
+import com.example.autoserviceapp.model.Operation;
+import com.example.autoserviceapp.repository.OperationRepository;
+import com.example.autoserviceapp.service.OperationService;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import com.example.autoserviceapp.model.Operation;
-import com.example.autoserviceapp.repository.OperationRepository;
-import com.example.autoserviceapp.service.EntityOperationService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-@AllArgsConstructor
-public class OperationServiceImpl implements EntityOperationService<Operation, Long> {
-
+@RequiredArgsConstructor
+public class OperationServiceImpl implements OperationService<Operation, Long> {
     private OperationRepository operationRepository;
 
     @Override
@@ -34,7 +33,6 @@ public class OperationServiceImpl implements EntityOperationService<Operation, L
     public List<Operation> getAll() {
         return operationRepository.findAll();
     }
-
 
     @Override
     public List<Operation> getAllByIds(Set<Long> ids) {

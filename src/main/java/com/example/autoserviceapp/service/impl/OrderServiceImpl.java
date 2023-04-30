@@ -6,8 +6,8 @@ import com.example.autoserviceapp.model.Order;
 import com.example.autoserviceapp.model.Owner;
 import com.example.autoserviceapp.repository.DetailRepository;
 import com.example.autoserviceapp.repository.OrderRepository;
-import com.example.autoserviceapp.service.OrderService;
 import com.example.autoserviceapp.service.BaseService;
+import com.example.autoserviceapp.service.OrderService;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
@@ -81,7 +81,7 @@ public class OrderServiceImpl implements OrderService<Order, Long> {
         if (order.getOperations().size() == 0) {
             return BigDecimal.valueOf(500);
         }
-        return  order.getOperations().stream()
+        return order.getOperations().stream()
                 .map(Operation::getCost)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }

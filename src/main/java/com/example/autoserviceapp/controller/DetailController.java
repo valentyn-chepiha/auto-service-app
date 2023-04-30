@@ -6,6 +6,8 @@ import com.example.autoserviceapp.dto.mapper.RequestMapper;
 import com.example.autoserviceapp.dto.mapper.ResponseMapper;
 import com.example.autoserviceapp.model.Detail;
 import com.example.autoserviceapp.service.BaseService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -23,14 +25,18 @@ public class DetailController {
     private BaseService<Detail, Long> detailService;
 
     @PostMapping
+    @ApiOperation(value = "Add new detail to DB", notes = "Return new detail with id")
     public DetailResponseDto createDetail(@RequestBody DetailRequestDto detailRequestDto) {
         Detail detail = detailRequestMapper.toModel(detailRequestDto);
         return detailResponseMapper.toDto(detailService.add(detail));
     }
 
     @PutMapping
-    public DetailResponseDto updateDetail(@RequestParam(name = "id") Long id,
-                                          @RequestBody DetailRequestDto detailRequestDto) {
+    @ApiOperation(value = "Update info about detail in DB",
+            notes = "Return detail from DB after update")
+    public DetailResponseDto updateDetail(
+            @RequestParam(name = "id") @ApiParam(name = "id", value = "Detail id") Long id,
+            @RequestBody DetailRequestDto detailRequestDto) {
         Detail detail = detailRequestMapper.toModel(detailRequestDto);
         detail.setId(id);
         return detailResponseMapper.toDto(detailService.update(detail));

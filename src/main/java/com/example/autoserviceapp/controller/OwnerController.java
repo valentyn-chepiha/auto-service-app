@@ -8,6 +8,8 @@ import com.example.autoserviceapp.dto.mapper.ResponseMapper;
 import com.example.autoserviceapp.model.Order;
 import com.example.autoserviceapp.model.Owner;
 import com.example.autoserviceapp.service.BaseService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
@@ -29,20 +31,26 @@ public class OwnerController {
     private ResponseMapper<Order, OrderResponseDto> orderResponseMapper;
 
     @PostMapping
+    @ApiOperation(value = "Add new owner car to DB", notes = "Return new owner with id")
     public OwnerResponseDto createOwner(@RequestBody OwnerRequestDto requestDto) {
         return ownerResponseMapper.toDto(ownerService.add(ownerRequestMapper.toModel(requestDto)));
     }
 
     @PutMapping
-    public OwnerResponseDto updateOwner(@RequestParam(name = "id") Long id,
-                                        @RequestBody OwnerRequestDto requestDto) {
+    @ApiOperation(value = "Update info about owner in DB",
+            notes = "Return owner from DB after update")
+    public OwnerResponseDto updateOwner(
+            @RequestParam(name = "id") @ApiParam(name = "id", value = "Owner id") Long id,
+            @RequestBody OwnerRequestDto requestDto) {
         Owner owner = ownerRequestMapper.toModel(requestDto);
         owner.setId(id);
         return ownerResponseMapper.toDto(ownerService.update(owner));
     }
 
     @GetMapping
-    public List<OrderResponseDto> getOrders(@RequestParam(name = "id") Long id) {
+    @ApiOperation(value = "Get list of orders", notes = "Return list orders for current owner")
+    public List<OrderResponseDto> getOrders(@RequestParam(name = "id")
+                                            @ApiParam(name = "id", value = "Owner id") Long id) {
         return ownerService.get(id).get().getOrders().stream()
                 .map(o -> orderResponseMapper.toDto(o))
                 .collect(Collectors.toList());

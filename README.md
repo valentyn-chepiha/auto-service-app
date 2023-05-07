@@ -1,9 +1,9 @@
 # Auto-service-app
 
 ## Description
-Auto-service-app is the REST API server of a auto service application.
-This project made to show my skills in Spring, Spring boot, Hibernate, REST, OOP, SOLID, data layers, liquibase.
-In this project I used basic CRUD operations.
+Auto-service-app is the REST API server of an auto-service application.
+This project was made to show my skills in Spring, SpringBoot, Hibernate, REST, OOP, SOLID, data layers and Liquibase.
+In this project, I used basic CRUD operations.
 One-to-one, one-to-many, and many-to-many relationships are used in databases.
 
 ## Technologies

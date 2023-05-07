@@ -21,13 +21,13 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "services")
+@Table(name = "operations")
 @RequiredArgsConstructor
 public class Operation {
     @Id
-    @GeneratedValue(generator = "services_id_seq", strategy = GenerationType.SEQUENCE)
-    @SequenceGenerator(name = "services_id_seq",
-            sequenceName = "services_id_seq",
+    @GeneratedValue(generator = "operations_id_seq", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "operations_id_seq",
+            sequenceName = "operations_id_seq",
             allocationSize = 1)
     private Long id;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

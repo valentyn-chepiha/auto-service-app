@@ -41,3 +41,15 @@ databaseChangeLog:
       file: db/changelog/sql/4_alter_table_orders_change_type_total.sql
   - include:
       file: db/changelog/sql/4_alter_table_services_change_type_cost.sql
+  - include:
+      file: db/changelog/sql/5_alter_table_services_rename_operations.sql
+  - include:
+      file: db/changelog/sql/5_alter_table_services_rename_sequence_operations_id_seq.sql
+  - include:
+      file: db/changelog/sql/5_alter_table_services_rename_primary_key_operations_pk.sql
+  - include:
+      file: db/changelog/sql/5_alter_table_orders_services_rename_orders_operations.sql
+  - include:
+      file: db/changelog/sql/5_alter_table_orders_services_rename_column_operations_id.sql
+  - include:
+      file: db/changelog/sql/5_alter_table_orders_services_rename_foreign_key_fk_operation_id.sql

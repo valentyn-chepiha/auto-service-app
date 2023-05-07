@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
@@ -35,8 +36,7 @@ public class Order {
     @GeneratedValue(generator = "orders_id_seq", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "orders_id_seq", sequenceName = "orders_id_seq", allocationSize = 1)
     private Long id;
-    @OneToOne(fetch = FetchType.LAZY)
-    @MapsId
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "car_id")
     private Car car;
     private String description;
@@ -44,12 +44,12 @@ public class Order {
     private LocalDate dateStart;
     @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(
-            name = "orders_services",
+            name = "orders_operations",
             joinColumns = @JoinColumn(name = "order_id"),
-            inverseJoinColumns = @JoinColumn(name = "service_id")
+            inverseJoinColumns = @JoinColumn(name = "operation_id")
     )
     private List<Operation> operations;
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "orders_details",
             joinColumns = @JoinColumn(name = "order_id"),

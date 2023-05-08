@@ -13,11 +13,11 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class OrderServiceImpl implements OrderService<Order, Long> {
     private OrderRepository orderRepository;
     private DetailRepository detailRepository;

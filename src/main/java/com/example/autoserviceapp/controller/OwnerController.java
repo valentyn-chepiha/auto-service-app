@@ -12,7 +12,8 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import java.util.List;
 import java.util.stream.Collectors;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -23,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/owner")
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class OwnerController {
     private BaseService<Owner, Long> ownerService;
     private RequestMapper<Owner, OwnerRequestDto> ownerRequestMapper;
@@ -33,7 +34,8 @@ public class OwnerController {
     @PostMapping
     @ApiOperation(value = "Add new owner car to DB", notes = "Return new owner with id")
     public OwnerResponseDto createOwner(@RequestBody OwnerRequestDto requestDto) {
-        return ownerResponseMapper.toDto(ownerService.add(ownerRequestMapper.toModel(requestDto)));
+        Owner owner = ownerRequestMapper.toModel(requestDto);
+        return ownerResponseMapper.toDto(ownerService.add(owner));
     }
 
     @PutMapping

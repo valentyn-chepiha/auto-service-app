@@ -8,7 +8,7 @@ import com.example.autoserviceapp.model.Detail;
 import com.example.autoserviceapp.service.BaseService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/detail")
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class DetailController {
     private RequestMapper<Detail, DetailRequestDto> detailRequestMapper;
     private ResponseMapper<Detail, DetailResponseDto> detailResponseMapper;

@@ -10,6 +10,7 @@ public class CarResponseMapper implements ResponseMapper<Car, CarResponseDto> {
     @Override
     public CarResponseDto toDto(Car entity) {
         CarResponseDto dto = new CarResponseDto();
+        dto.setId(entity.getId());
         dto.setBrand(entity.getBrand());
         dto.setCarNumber(entity.getCarNumber());
         dto.setModel(entity.getModel());

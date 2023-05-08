@@ -8,7 +8,7 @@ import com.example.autoserviceapp.model.Car;
 import com.example.autoserviceapp.service.BaseService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/car")
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class CarController {
     private BaseService<Car, Long> carService;
     private RequestMapper<Car, CarRequestDto> carRequestMapper;

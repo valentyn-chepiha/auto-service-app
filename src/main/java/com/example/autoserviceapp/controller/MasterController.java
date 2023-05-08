@@ -13,7 +13,7 @@ import io.swagger.annotations.ApiParam;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/master")
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class MasterController {
     private RequestMapper<Master, MasterRequestDto> masterRequestMapper;
     private ResponseMapper<Master, MasterResponseDto> masterResponseMapper;

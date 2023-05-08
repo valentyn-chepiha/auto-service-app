@@ -7,11 +7,11 @@ import com.example.autoserviceapp.model.Operation;
 import com.example.autoserviceapp.model.Order;
 import com.example.autoserviceapp.service.MasterService;
 import com.example.autoserviceapp.service.OrderService;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class OperationRequestMapper implements RequestMapper<Operation, OperationRequestDto> {
     private MasterService<Master, Long> masterService;
     private OrderService<Order, Long> orderService;
@@ -22,7 +22,7 @@ public class OperationRequestMapper implements RequestMapper<Operation, Operatio
         entity.setCost(dto.getCost());
         entity.setMaster(masterService.get(dto.getMasterId()).get());
         entity.setOrder(orderService.get(dto.getOrderId()).get());
-        entity.setStatus(Operation.StatusPaid.valueOf(dto.getStatusName()));
+        entity.setStatus(Operation.StatusPaid.valueOf(dto.getStatusName().toUpperCase()));
         return entity;
     }
 }

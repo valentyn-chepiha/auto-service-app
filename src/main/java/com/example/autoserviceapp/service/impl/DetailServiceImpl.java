@@ -6,11 +6,11 @@ import com.example.autoserviceapp.service.OperationService;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class DetailServiceImpl implements OperationService<Detail, Long> {
     private DetailRepository detailRepository;
 

@@ -4,13 +4,14 @@ import com.example.autoserviceapp.dto.MasterRequestDto;
 import com.example.autoserviceapp.dto.mapper.RequestMapper;
 import com.example.autoserviceapp.model.Master;
 import com.example.autoserviceapp.repository.OperationRepository;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class MasterRequestMapper implements RequestMapper<Master, MasterRequestDto> {
     private OperationRepository operationRepository;
 
@@ -18,8 +19,13 @@ public class MasterRequestMapper implements RequestMapper<Master, MasterRequestD
     public Master toModel(MasterRequestDto dto) {
         Master master = new Master();
         master.setPib(dto.getPib());
+
         Set<Long> operationIds = new HashSet<>(dto.getOperationIds());
-        master.setOperations(operationRepository.findAllByIdIn(operationIds));
+        if (operationIds.size() > 0) {
+            master.setOperations(operationRepository.findAllByIdIn(operationIds));
+        } else {
+            master.setOperations(new ArrayList<>());
+        }
         return master;
     }
 }

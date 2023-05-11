@@ -5,11 +5,11 @@ import com.example.autoserviceapp.repository.OwnerRepository;
 import com.example.autoserviceapp.service.BaseService;
 import java.util.List;
 import java.util.Optional;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class OwnerServiceImpl implements BaseService<Owner, Long> {
     private OwnerRepository ownerRepository;
 

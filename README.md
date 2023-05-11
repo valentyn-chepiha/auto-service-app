@@ -23,10 +23,31 @@ One-to-one, one-to-many, and many-to-many relationships are used in databases.
 
 ## Setup
 - Clone this project
+
+### First way
 - Add your db configurations in resources/application.properties (username, password, url)
-````-
+````
     spring.datasource.url= CONNECTION STRING
     spring.datasource.username= USER NAME
     spring.datasource.password= PASSWORD
 ````
 - Run project
+
+### Second way
+- Install Docker
+- Add your configuration in .env
+````
+    POSTGRESDB_DB= DB SCHEME NAME
+    POSTGRESDB_USERNAME= USER NAME
+    POSTGRESDB_PASSWORD= USER PASSWORD
+    
+    POSTGRESDB_LOCAL_PORT= PORT OUTSIDE CONTAINER
+    POSTGRESDB_DOCKER_PORT= PORT INSIDE CONTAINER
+    
+    SPRING_LOCAL_PORT= PORT OUTSIDE CONTAINER
+    SPRING_DOCKER_PORT= PORT INSIDE CONTAINER
+````
+- Run command
+````
+    docker compose up
+````

@@ -2,9 +2,7 @@
 
 ## Description
 Auto-service-app is the REST API server of an auto-service application.
-This project was made to show my skills in Spring, SpringBoot, Hibernate, REST, OOP, SOLID, data layers and Liquibase.
-In this project, I used basic CRUD operations.
-One-to-one, one-to-many, and many-to-many relationships are used in databases.
+In this app you can add a customer and their cars. You can keep track of the work performed by repairmen and charge them a salary. The application also provides for the availability of a cumulative discount.
 
 ## Technologies
 - Java 11
@@ -15,6 +13,8 @@ One-to-one, one-to-many, and many-to-many relationships are used in databases.
 - Swagger 2
 - Lombok
 - Liquibase
+- CRUD
+- REST
 
 ## How to use
 - First, run the project.
